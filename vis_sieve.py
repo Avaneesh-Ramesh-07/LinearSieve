@@ -19,7 +19,7 @@ def vis_rep(sieve, data, row_label=None, column_label=None, prefix='corex_output
         row_label = map(str, range(len(data)))
     column_label += ["Y%d" % j for j in range(sieve.n_hidden)]
 
-    print 'Groups in groups.txt'
+    print ('Groups in groups.txt')
     labels = sieve.transform(data)
     data = np.hstack([data, labels])
     output_groups(sieve.tcs, sieve.mis, column_label, prefix=prefix)
@@ -27,7 +27,7 @@ def vis_rep(sieve, data, row_label=None, column_label=None, prefix='corex_output
     if hasattr(sieve, "tc_history"):
         plot_convergence(sieve.tc_history, prefix=prefix)
 
-    print 'Pairwise plots among high TC variables in "relationships"'
+    print ('Pairwise plots among high TC variables in "relationships"')
     plot_top_relationships(data, sieve.mis, column_label, labels, prefix=prefix)
 
     vis_hierarchy(sieve, column_label, prefix=prefix, max_edges=max_edges)
@@ -53,8 +53,9 @@ def output_groups(tcs, mis, column_label, thresh=0, prefix=''):
 def output_labels(labels, row_label, prefix=''):
     f = safe_open(prefix + '/text_files/cont_labels.txt', 'w+')
     ns, m = labels.shape
+
     for l in range(ns):
-        f.write(row_label[l] + ',' + ','.join(map(str, labels[l, :])) + '\n')
+        f.write(list(row_label)[l] + ',' + ','.join((map(str, list(labels[l, :])))) + '\n')
     f.close()
 
 
@@ -160,10 +161,10 @@ def vis_hierarchy(sieve, column_label, max_edges=200, prefix=''):
     # Output JSON files
     try:
         import os
-        print os.path.dirname(os.path.realpath(__file__))
+        print (os.path.dirname(os.path.realpath(__file__)))
         copyfile(os.path.dirname(os.path.realpath(__file__)) + '/tests/d3_files/force.html', prefix + '/graphs/force.html')
     except:
-        print "Couldn't find 'force.html' file for visualizing d3 output"
+        print ("Couldn't find 'force.html' file for visualizing d3 output")
     import json
     from networkx.readwrite import json_graph
 
@@ -218,7 +219,7 @@ def edge2pdf(g, filename, threshold=0, position=None, labels=None, connected=Tru
     if connected:
         touching = list(set(sum([[a, b] for a, b in g.edges()], [])))
         g = nx.subgraph(g, touching)
-        print 'non-isolated nodes,edges', len(list(g.nodes())), len(list(g.edges()))
+        print ('non-isolated nodes,edges', len(list(g.nodes())), len(list(g.edges())))
     f = safe_open(filename + '.dot', 'w+')
     if directed:
         f.write("strict digraph {\n".encode('utf-8'))
@@ -325,7 +326,7 @@ if __name__ == '__main__':
     import csv
     import sys
     import traceback
-    import cPickle
+    import pickle
     import numpy.ma as ma
     from optparse import OptionParser, OptionGroup
 
@@ -377,7 +378,7 @@ if __name__ == '__main__':
 
     (options, args) = parser.parse_args()
     if not len(args) == 1:
-        print "Run with '-h' option for usage help."
+        print ("Run with '-h' option for usage help.")
         sys.exit()
 
     verbose = options.verbose
@@ -406,24 +407,24 @@ if __name__ == '__main__':
         mean_x = ma.mean(Xm, axis=0)[np.newaxis, :]
         X = np.where(X == options.missing, mean_x, X)
     except:
-        print "Incorrect data format.\nCheck that you've correctly specified options " \
+        print ("Incorrect data format.\nCheck that you've correctly specified options " \
               "such as continuous or not, \nand if there is a header row or column.\n" \
               "Also, missing values should be specified with a numeric value (-1 by default).\n" \
-              "Run 'python vis_corex.py -h' option for help with options."
+              "Run 'python vis_corex.py -h' option for help with options.")
         traceback.print_exc(file=sys.stdout)
         sys.exit()
 
     if verbose:
-        print '\nData summary: X has %d rows and %d columns' % X.shape
-        print 'Variable names are: ' + ','.join(map(str, list(enumerate(variable_names))))
-        print 'first row', X[0]
+        print ('\nData summary: X has %d rows and %d columns' % X.shape)
+        print ('Variable names are: ' + ','.join(map(str, list(enumerate(variable_names)))))
+        print ('first row', X[0])
 
     if options.gaussianize:
         X = gaussianize(X)
 
     # Run Sieve on data
     if verbose:
-        print 'Getting Sieve results'
+        print ('Getting Sieve results')
     filename = options.output + '/sieve.dat'  # Store object here
     if not os.path.exists(os.path.dirname(filename)):
         os.makedirs(os.path.dirname(filename))

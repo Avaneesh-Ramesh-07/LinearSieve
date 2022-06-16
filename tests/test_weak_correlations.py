@@ -3,11 +3,13 @@
 # It seems that Bayesian smoothing has a big effect on this noise.
 # Here we test various
 import sys
-sys.path.append('..')
-import linearsieve
+sys.path.append( '..' )
+
+
 import numpy as np
-import vis_sieve as vs
+import LinearSieve.vis_sieve as vs
 from scipy.stats import kendalltau
+import LinearSieve.linearsieve as linearsieve
 
 
 verbose = False
@@ -72,17 +74,17 @@ order = np.argsort([-q.shape[1] for q in data_groups])
 data_groups = [data_groups[i] for i in order]
 signal = np.array([signal[:,i] for i in order]).T
 data = np.hstack(data_groups)
-print 'group sizes', map(lambda q: q.shape[1], data_groups)
-print 'Data size:', data.shape
+print ('group sizes', map(lambda q: q.shape[1], data_groups))
+print ('Data size:', data.shape)
 
 for loop_i in range(1):
     out = linearsieve.Sieve(n_hidden=n_groups, seed=seed + loop_i, verbose=verbose).fit(data)
-    print 'Done, scoring:'
+    print ('Done, scoring:')
     scores = score(signal, out.transform(data))
-    print 'TC:', out.tc
-    print 'Actual score:', scores
-    print 'Number Ok, %d / %d' % (np.sum(scores > 0.5), len(scores))
-    print 'total score, %0.3f' % np.sum(scores)
+    print ('TC:', out.tc)
+    print ('Actual score:', scores)
+    print ('Number Ok, %d / %d' % (np.sum(scores > 0.5), len(scores)))
+    print ('total score, %0.3f' % np.sum(scores))
 
 names = []
 for j, group in enumerate(data_groups):
@@ -90,10 +92,12 @@ for j, group in enumerate(data_groups):
     rs = map(lambda q: get_r(q, signal[:, j]), group.T)
     mis = map(lambda r: (-0.5 * np.log(1 - r**2)), rs)
     #print ','.join(map(lambda r: '%0.3f' % r, mis))
-    print ('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], np.sum(mis))).expandtabs(30)
+
+    #np.sum(mis) is of type map
+    #print (('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], list(np.sum(mis)))).expandtabs(30))
     for i in range(group.shape[1]):
         names.append(color + '_' + str(i))
 
 vs.vis_rep(out, data, column_label=names, prefix='weak')
-print 'Perfect score:', score(signal, signal)
-print 'Baseline score:', score(signal, baseline)
+print ('Perfect score:', score(signal, signal))
+print ('Baseline score:', score(signal, baseline))

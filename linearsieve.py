@@ -97,7 +97,7 @@ class Sieve(object):
         self.tc_history = [[0] for _ in range(self.n_hidden)]  # Keep track of TC convergence for each factor
         if verbose:
             np.set_printoptions(precision=3, suppress=True)
-            print 'Linear Sieve with %d latent factors' % n_hidden
+            print ('Linear Sieve with %d latent factors' % n_hidden)
 
     def mi_j(self, j):
         """MIs for level j"""
@@ -140,7 +140,7 @@ class Sieve(object):
 
         for j in range(self.n_hidden):
             if self.verbose:
-                print 'updating %d' % j
+                print ('updating %d' % j)
             self.moments.append({})  # Dictionary of moments for this level
             m = self.moments[j]  # Abbreviation
             nv_k = nv + j  # Number of variables on this level
@@ -158,12 +158,12 @@ class Sieve(object):
 
                     self.tc_history[j].append(self.tc_j(j))
                     if self.verbose:
-                        print 'TC = %0.5f' % self.tc_history[j][-1]
+                        print ('TC = %0.5f' % self.tc_history[j][-1])
                     if np.abs(self.tc_history[j][-1] - self.tc_history[j][-2]) < self.tol:
                         break  # Stop if converged
                 else:
                     if self.verbose:
-                        print "Warning: Convergence not achieved in %d iterations. Increase max_iter." % self.max_iter
+                        print ("Warning: Convergence not achieved in %d iterations. Increase max_iter." % self.max_iter)
                 if self.tc_j(j) > best_tc:
                     best_w = np.copy(self.ws[j, :nv_k])
                     best_tc = self.tc_j(j)
@@ -218,7 +218,7 @@ class Sieve(object):
         nv_k = self.nv + j  # Number of variables on this level
         m = self.moments[j]  # Update moments, abbreviate for readability
         if np.max(np.abs(self.ws)) > 1e10:
-            print 'Warning: if w is getting huge, a perfect linear rel. is causing divergence.'
+            print ('Warning: if w is getting huge, a perfect linear rel. is causing divergence.')
             self.ws = self.ws.clip(-1e10, 1e10)
         y = np.dot(x, self.ws[j])
         m["Y^2"] = var(y) + self.noise ** 2  # <Y^2>

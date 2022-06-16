@@ -17,7 +17,7 @@ from sklearn.cluster import MiniBatchKMeans
 from sklearn import decomposition
 
 sys.path.append('..')
-import linearsieve
+import LinearSieve.linearsieve as linearsieve
 
 # Display progress logs on stdout
 logging.basicConfig(level=logging.INFO,
