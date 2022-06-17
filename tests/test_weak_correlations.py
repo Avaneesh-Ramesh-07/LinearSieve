@@ -92,7 +92,7 @@ for j, group in enumerate(data_groups):
     rs = map(lambda q: get_r(q, signal[:, j]), group.T)
     mis = map(lambda r: (-0.5 * np.log(1 - r**2)), rs)
     #print ','.join(map(lambda r: '%0.3f' % r, mis))
-
+    #print(list(np.sum(mis)))
     #np.sum(mis) is of type map
     #print (('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], list(np.sum(mis)))).expandtabs(30))
     for i in range(group.shape[1]):

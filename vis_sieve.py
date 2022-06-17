@@ -53,9 +53,11 @@ def output_groups(tcs, mis, column_label, thresh=0, prefix=''):
 def output_labels(labels, row_label, prefix=''):
     f = safe_open(prefix + '/text_files/cont_labels.txt', 'w+')
     ns, m = labels.shape
-
+    #print("Length of rowlabel list: ", len(list(row_label)))
+    listrl=list(row_label)
     for l in range(ns):
-        f.write(list(row_label)[l] + ',' + ','.join((map(str, list(labels[l, :])))) + '\n')
+
+        f.write(listrl[l] + ',' + ','.join((map(str, list(labels[l, :])))) + '\n')
     f.close()
 
 
@@ -95,7 +97,7 @@ def plot_rels(data, labels=None, colors=None, outfile="rels", latent=None, alpha
     pairs = list(combinations(range(n), 2))
     if colors is not None:
         colors = (colors - np.min(colors)) / (np.max(colors) - np.min(colors))
-
+    labels=list(labels)
     for ax, pair in zip(axs.flat, pairs):
         ax.scatter(data[:, pair[0]], data[:, pair[1]], c=colors, cmap=pylab.get_cmap("jet"),
                        marker='.', alpha=alpha, edgecolors='none', vmin=0, vmax=1)
@@ -135,16 +137,19 @@ def vis_hierarchy(sieve, column_label, max_edges=200, prefix=''):
 
     # Construct non-tree graph
     g = nx.DiGraph()
+
+    print("attributes:  ", dir(g))
     max_node_weight = np.max(sieve.tcs)
     for i, c in enumerate(column_label):
         if i < sieve.nv:
             g.add_node(i)
-            g.node[i]['weight'] = 1
-            g.node[i]['label'] = c
-            g.node[i]['name'] = c  # JSON uses this field
+
+            g._node[i]['weight'] = 1
+            g._node[i]['label'] = c
+            g._node[i]['name'] = c  # JSON uses this field
         else:
             g.add_node(f(i))
-            g.node[f(i)]['weight'] = 0.33 * np.clip(sieve.tcs[i - sieve.nv] / max_node_weight, 0.33, 1)
+            g._node[f(i)]['weight'] = 0.33 * np.clip(sieve.tcs[i - sieve.nv] / max_node_weight, 0.33, 1)
         if i >= sieve.nv:
             g.add_weighted_edges_from([(f(j), (1, i - sieve.nv), sieve.mi_j(i - sieve.nv)[j]) for j in range(i)])
 
