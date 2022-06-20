@@ -1,5 +1,7 @@
 """ This module implements some visualizations of Sieve representations.
 """
+#common errors: type unicode needs to be changed to type string, there is no method has_key anymore for dictionaries (use keyword "in"), no attribute node (attribute is _node)
+
 
 import os
 from shutil import copyfile
@@ -54,7 +56,7 @@ def output_labels(labels, row_label, prefix=''):
     f = safe_open(prefix + '/text_files/cont_labels.txt', 'w+')
     ns, m = labels.shape
     #print("Length of rowlabel list: ", len(list(row_label)))
-    listrl=list(row_label)
+    listrl=list(row_label) #changed from list(rowlabel) being in place of listrl in f.write func below
     for l in range(ns):
 
         f.write(listrl[l] + ',' + ','.join((map(str, list(labels[l, :])))) + '\n')
@@ -97,7 +99,7 @@ def plot_rels(data, labels=None, colors=None, outfile="rels", latent=None, alpha
     pairs = list(combinations(range(n), 2))
     if colors is not None:
         colors = (colors - np.min(colors)) / (np.max(colors) - np.min(colors))
-    labels=list(labels)
+    labels=list(labels)  #(line wasn't here before)added this line in to combat the map not subscriptable error given in lines: ax.set_xlabel(shorten(labels[pair[0]])) and ax.set_ylabel(shorten(labels[pair[1]]))
     for ax, pair in zip(axs.flat, pairs):
         ax.scatter(data[:, pair[0]], data[:, pair[1]], c=colors, cmap=pylab.get_cmap("jet"),
                        marker='.', alpha=alpha, edgecolors='none', vmin=0, vmax=1)
@@ -138,12 +140,11 @@ def vis_hierarchy(sieve, column_label, max_edges=200, prefix=''):
     # Construct non-tree graph
     g = nx.DiGraph()
 
-    print("attributes:  ", dir(g))
     max_node_weight = np.max(sieve.tcs)
     for i, c in enumerate(column_label):
         if i < sieve.nv:
             g.add_node(i)
-
+            #changed 3 lines below from g.node[i][...]
             g._node[i]['weight'] = 1
             g._node[i]['label'] = c
             g._node[i]['name'] = c  # JSON uses this field
@@ -160,7 +161,7 @@ def vis_hierarchy(sieve, column_label, max_edges=200, prefix=''):
 
     # Display tree version
     tree = g.copy()
-    tree = trim(tree, max_parents=1, max_children=False)
+    #tree = trim(tree, max_parents=1, max_children=False)
     edge2pdf(tree, prefix + '/graphs/tree', labels='label', directed=True, makepdf=True)
 
     # Output JSON files
@@ -173,7 +174,7 @@ def vis_hierarchy(sieve, column_label, max_edges=200, prefix=''):
     import json
     from networkx.readwrite import json_graph
 
-    mapping = dict([(n, tree.node[n].get('label', str(n))) for n in tree.nodes()])
+    mapping = dict([(n, tree._node[n].get('label', str(n))) for n in tree.nodes()])
     tree = nx.relabel_nodes(tree, mapping)
     json.dump(json_graph.node_link_data(tree), safe_open(prefix + '/graphs/force.json', 'w+'))
     json.dump(json_graph.node_link_data(h), safe_open(prefix + '/graphs/force_nontree.json', 'w+'))
@@ -217,23 +218,25 @@ def edge2pdf(g, filename, threshold=0, position=None, labels=None, connected=Tru
     def cnn(node):
         #change node names for dot format
         if type(node) is tuple or type(node) is list:
-            return u'n' + u'_'.join(map(unicode, node))
+            return u'n' + u'_'.join(map(str, node))
         else:
-            return unicode(node)
+            return str(node)
 
     if connected:
         touching = list(set(sum([[a, b] for a, b in g.edges()], [])))
         g = nx.subgraph(g, touching)
         print ('non-isolated nodes,edges', len(list(g.nodes())), len(list(g.edges())))
-    f = safe_open(filename + '.dot', 'w+')
+    f = safe_open(filename + '.dot', 'wb')
     if directed:
         f.write("strict digraph {\n".encode('utf-8'))
     else:
         f.write("strict graph {\n".encode('utf-8'))
     #f.write("\tgraph [overlap=scale];\n".encode('utf-8'))
     f.write("\tnode [shape=point];\n".encode('utf-8'))
+
     for a, b, d in g.edges(data=True):
-        if d.has_key('weight'):
+
+        if 'weight' in d:
             if directed:
                 f.write(("\t" + cnn(a) + ' -> ' + cnn(b) + ' [penwidth=%.2f' % float(
                     np.clip(d['weight'], 0, 9)) + '];\n').encode('utf-8'))
@@ -252,15 +255,15 @@ def edge2pdf(g, filename, threshold=0, position=None, labels=None, connected=Tru
                 thislabel = labels[n].replace(u'"', u'\\"')
                 lstring = u'label="' + thislabel + u'",shape=none'
             elif type(labels) == str:
-                if g.node[n].has_key('label'):
-                    thislabel = g.node[n][labels].replace(u'"', u'\\"')
+                if 'label' in g._node[n]:
+                    thislabel = g._node[n][labels].replace(u'"', u'\\"')
                     # combine dupes
                     #llist = thislabel.split(',')
                     #thislabel = ','.join([l for l in set(llist)])
                     thislabel, thiscolor = extract_color(thislabel)
                     lstring = u'label="%s",shape=none,fontcolor="%s"' % (thislabel, thiscolor)
                 else:
-                    weight = g.node[n].get('weight', 0.1)
+                    weight = g._node[n].get('weight', 0.1)
                     if n[0] == 1:
                         lstring = u'shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=%0.2f,label="Y%d"' % (
                             2 * weight, n[1])
@@ -268,7 +271,7 @@ def edge2pdf(g, filename, threshold=0, position=None, labels=None, connected=Tru
                         lstring = u'shape=point,height=%0.2f' % weight
             else:
                 lstring = 'label="' + str(n) + '",shape=none'
-            lstring = unicode(lstring)
+            lstring = str(lstring)
         else:
             lstring = False
         if position is not None:
@@ -294,10 +297,13 @@ def shorten(s, n=12):
 
 
 def trim(g, max_parents=False, max_children=False):
+    print(type(g))
     for node in g:
         if max_parents:
             parents = list(g.successors(node))
-            weights = [g.edge[node][parent]['weight'] for parent in parents]
+            for parent in parents:
+                print(type(g.edges))
+                weights = [g.edges[node][parent]['weight'] ] #no attribute edge for variable g, attribute is actually edges
             for weak_parent in np.argsort(weights)[:-max_parents]:
                 g.remove_edge(node, parents[weak_parent])
         if max_children:

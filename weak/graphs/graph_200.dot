@@ -1,0 +1,430 @@
+strict digraph {
+	node [shape=point];
+	1 -> n1_2 [penwidth=0.11];
+	2 -> n1_2 [penwidth=0.16];
+	4 -> n1_2 [penwidth=0.13];
+	8 -> n1_2 [penwidth=1.02];
+	9 -> n1_2 [penwidth=0.42];
+	10 -> n1_2 [penwidth=0.95];
+	11 -> n1_2 [penwidth=0.51];
+	12 -> n1_2 [penwidth=0.28];
+	13 -> n1_2 [penwidth=0.47];
+	14 -> n1_2 [penwidth=1.50];
+	15 -> n1_4 [penwidth=1.61];
+	16 -> n1_4 [penwidth=0.66];
+	17 -> n1_4 [penwidth=0.25];
+	18 -> n1_4 [penwidth=0.26];
+	20 -> n1_4 [penwidth=0.54];
+	21 -> n1_4 [penwidth=1.61];
+	22 -> n1_4 [penwidth=0.97];
+	23 -> n1_4 [penwidth=0.91];
+	24 -> n1_4 [penwidth=0.64];
+	26 -> n1_4 [penwidth=0.71];
+	27 -> n1_4 [penwidth=0.27];
+	29 -> n1_4 [penwidth=0.99];
+	30 -> n1_0 [penwidth=0.94];
+	32 -> n1_0 [penwidth=0.16];
+	33 -> n1_0 [penwidth=0.67];
+	34 -> n1_0 [penwidth=0.98];
+	35 -> n1_0 [penwidth=0.51];
+	36 -> n1_0 [penwidth=0.26];
+	37 -> n1_0 [penwidth=0.98];
+	38 -> n1_0 [penwidth=0.98];
+	39 -> n1_0 [penwidth=1.02];
+	40 -> n1_0 [penwidth=0.69];
+	41 -> n1_0 [penwidth=0.10];
+	42 -> n1_0 [penwidth=1.04];
+	44 -> n1_0 [penwidth=1.03];
+	45 -> n1_3 [penwidth=0.48];
+	46 -> n1_3 [penwidth=0.12];
+	47 -> n1_3 [penwidth=1.58];
+	48 -> n1_3 [penwidth=0.99];
+	50 -> n1_3 [penwidth=0.26];
+	51 -> n1_3 [penwidth=0.49];
+	52 -> n1_3 [penwidth=1.03];
+	53 -> n1_3 [penwidth=0.67];
+	54 -> n1_3 [penwidth=0.99];
+	55 -> n1_3 [penwidth=0.13];
+	56 -> n1_3 [penwidth=0.66];
+	57 -> n1_3 [penwidth=0.28];
+	58 -> n1_3 [penwidth=0.27];
+	60 -> n1_17 [penwidth=0.13];
+	61 -> n1_17 [penwidth=0.64];
+	63 -> n1_17 [penwidth=0.49];
+	64 -> n1_17 [penwidth=0.59];
+	66 -> n1_17 [penwidth=0.46];
+	71 -> n1_17 [penwidth=0.95];
+	72 -> n1_1 [penwidth=1.55];
+	73 -> n1_1 [penwidth=0.70];
+	74 -> n1_1 [penwidth=0.81];
+	75 -> n1_1 [penwidth=1.01];
+	76 -> n1_1 [penwidth=0.54];
+	77 -> n1_1 [penwidth=0.98];
+	78 -> n1_1 [penwidth=0.46];
+	79 -> n1_1 [penwidth=0.62];
+	80 -> n1_1 [penwidth=1.67];
+	81 -> n1_1 [penwidth=0.50];
+	82 -> n1_1 [penwidth=0.67];
+	83 -> n1_1 [penwidth=0.27];
+	84 -> n1_1 [penwidth=0.11];
+	85 -> n1_5 [penwidth=1.00];
+	86 -> n1_5 [penwidth=0.97];
+	87 -> n1_5 [penwidth=0.69];
+	89 -> n1_5 [penwidth=0.55];
+	90 -> n1_5 [penwidth=0.26];
+	91 -> n1_5 [penwidth=0.45];
+	92 -> n1_5 [penwidth=0.10];
+	93 -> n1_5 [penwidth=0.99];
+	94 -> n1_5 [penwidth=0.41];
+	95 -> n1_5 [penwidth=0.63];
+	98 -> n1_11 [penwidth=0.52];
+	99 -> n1_11 [penwidth=1.01];
+	100 -> n1_11 [penwidth=0.53];
+	101 -> n1_11 [penwidth=0.45];
+	102 -> n1_11 [penwidth=0.15];
+	103 -> n1_11 [penwidth=0.92];
+	104 -> n1_11 [penwidth=0.60];
+	106 -> n1_11 [penwidth=0.21];
+	107 -> n1_11 [penwidth=0.31];
+	108 -> n1_11 [penwidth=0.33];
+	110 -> n1_6 [penwidth=0.68];
+	111 -> n1_6 [penwidth=1.00];
+	112 -> n1_6 [penwidth=0.99];
+	113 -> n1_6 [penwidth=0.97];
+	115 -> n1_6 [penwidth=0.96];
+	116 -> n1_6 [penwidth=1.48];
+	117 -> n1_6 [penwidth=1.02];
+	118 -> n1_6 [penwidth=0.51];
+	121 -> n1_6 [penwidth=0.25];
+	122 -> n1_10 [penwidth=0.66];
+	123 -> n1_10 [penwidth=0.46];
+	124 -> n1_10 [penwidth=1.20];
+	126 -> n1_10 [penwidth=0.69];
+	127 -> n1_10 [penwidth=0.12];
+	128 -> n1_10 [penwidth=0.98];
+	129 -> n1_10 [penwidth=0.62];
+	130 -> n1_10 [penwidth=1.03];
+	133 -> n1_10 [penwidth=0.12];
+	134 -> n1_8 [penwidth=0.61];
+	136 -> n1_8 [penwidth=0.98];
+	137 -> n1_8 [penwidth=1.02];
+	138 -> n1_8 [penwidth=0.13];
+	139 -> n1_8 [penwidth=0.27];
+	140 -> n1_8 [penwidth=0.45];
+	141 -> n1_8 [penwidth=0.65];
+	142 -> n1_8 [penwidth=1.00];
+	144 -> n1_8 [penwidth=1.53];
+	145 -> n1_18 [penwidth=0.96];
+	149 -> n1_18 [penwidth=1.50];
+	150 -> n1_18 [penwidth=0.28];
+	151 -> n1_18 [penwidth=0.72];
+	153 -> n1_18 [penwidth=0.95];
+	154 -> n1_18 [penwidth=1.56];
+	157 -> n1_9 [penwidth=0.10];
+	159 -> n1_9 [penwidth=0.64];
+	161 -> n1_9 [penwidth=1.64];
+	162 -> n1_9 [penwidth=0.81];
+	164 -> n1_9 [penwidth=1.52];
+	165 -> n1_9 [penwidth=1.56];
+	168 -> n1_16 [penwidth=0.11];
+	169 -> n1_16 [penwidth=1.65];
+	170 -> n1_16 [penwidth=0.99];
+	171 -> n1_16 [penwidth=0.47];
+	172 -> n1_16 [penwidth=1.57];
+	173 -> n1_16 [penwidth=0.97];
+	174 -> n1_16 [penwidth=0.68];
+	177 -> n1_12 [penwidth=0.50];
+	178 -> n1_12 [penwidth=1.69];
+	180 -> n1_12 [penwidth=1.59];
+	181 -> n1_12 [penwidth=0.45];
+	182 -> n1_12 [penwidth=1.13];
+	183 -> n1_12 [penwidth=0.47];
+	185 -> n1_13 [penwidth=0.25];
+	187 -> n1_13 [penwidth=0.13];
+	188 -> n1_13 [penwidth=0.49];
+	189 -> n1_13 [penwidth=1.54];
+	190 -> n1_13 [penwidth=0.71];
+	191 -> n1_13 [penwidth=0.98];
+	192 -> n1_13 [penwidth=1.00];
+	193 -> n1_13 [penwidth=0.61];
+	194 -> n1_15 [penwidth=0.98];
+	195 -> n1_15 [penwidth=0.12];
+	197 -> n1_15 [penwidth=0.96];
+	198 -> n1_15 [penwidth=0.25];
+	199 -> n1_15 [penwidth=0.99];
+	200 -> n1_15 [penwidth=0.51];
+	201 -> n1_15 [penwidth=1.02];
+	203 -> n1_19 [penwidth=0.95];
+	204 -> n1_19 [penwidth=0.15];
+	205 -> n1_19 [penwidth=0.10];
+	206 -> n1_19 [penwidth=0.20];
+	207 -> n1_19 [penwidth=0.99];
+	208 -> n1_19 [penwidth=1.58];
+	209 -> n1_19 [penwidth=1.02];
+	210 -> n1_20 [penwidth=0.30];
+	211 -> n1_20 [penwidth=0.45];
+	213 -> n1_20 [penwidth=1.49];
+	214 -> n1_20 [penwidth=0.51];
+	215 -> n1_20 [penwidth=0.43];
+	216 -> n1_20 [penwidth=0.63];
+	217 -> n1_20 [penwidth=0.10];
+	218 -> n1_14 [penwidth=1.16];
+	219 -> n1_14 [penwidth=0.44];
+	220 -> n1_14 [penwidth=0.92];
+	221 -> n1_14 [penwidth=0.69];
+	222 -> n1_14 [penwidth=1.47];
+	223 -> n1_14 [penwidth=0.25];
+	224 -> n1_14 [penwidth=0.10];
+	225 -> n1_7 [penwidth=0.95];
+	226 -> n1_7 [penwidth=0.64];
+	227 -> n1_7 [penwidth=0.98];
+	228 -> n1_7 [penwidth=0.48];
+	229 -> n1_7 [penwidth=1.03];
+	230 -> n1_7 [penwidth=0.68];
+	231 -> n1_7 [penwidth=1.58];
+	232 -> n1_23 [penwidth=0.53];
+	233 -> n1_23 [penwidth=0.28];
+	234 -> n1_23 [penwidth=1.31];
+	238 -> n1_25 [penwidth=0.14];
+	240 -> n1_25 [penwidth=0.65];
+	241 -> n1_25 [penwidth=0.10];
+	242 -> n1_25 [penwidth=0.27];
+	243 -> n1_22 [penwidth=0.72];
+	245 -> n1_22 [penwidth=0.71];
+	247 -> n1_22 [penwidth=0.89];
+	253 -> n1_24 [penwidth=0.38];
+	254 -> n1_24 [penwidth=0.55];
+	255 -> n1_24 [penwidth=0.12];
+	256 -> n1_21 [penwidth=1.26];
+	257 -> n1_21 [penwidth=0.98];
+	259 -> n1_21 [penwidth=0.52];
+	267 -> n1_26 [penwidth=1.00];
+	269 -> n1_26 [penwidth=0.61];
+	1 [label="1",shape=none,fontcolor="black"]
+	2 [label="2",shape=none,fontcolor="black"]
+	4 [label="4",shape=none,fontcolor="black"]
+	8 [label="8",shape=none,fontcolor="black"]
+	9 [label="9",shape=none,fontcolor="black"]
+	10 [label="10",shape=none,fontcolor="black"]
+	11 [label="11",shape=none,fontcolor="black"]
+	12 [label="12",shape=none,fontcolor="black"]
+	13 [label="13",shape=none,fontcolor="black"]
+	14 [label="14",shape=none,fontcolor="black"]
+	15 [label="0",shape=none,fontcolor="red"]
+	16 [label="1",shape=none,fontcolor="red"]
+	17 [label="2",shape=none,fontcolor="red"]
+	18 [label="3",shape=none,fontcolor="red"]
+	20 [label="5",shape=none,fontcolor="red"]
+	21 [label="6",shape=none,fontcolor="red"]
+	22 [label="7",shape=none,fontcolor="red"]
+	23 [label="8",shape=none,fontcolor="red"]
+	24 [label="9",shape=none,fontcolor="red"]
+	26 [label="11",shape=none,fontcolor="red"]
+	27 [label="12",shape=none,fontcolor="red"]
+	29 [label="14",shape=none,fontcolor="red"]
+	30 [label="0",shape=none,fontcolor="green"]
+	32 [label="2",shape=none,fontcolor="green"]
+	33 [label="3",shape=none,fontcolor="green"]
+	34 [label="4",shape=none,fontcolor="green"]
+	35 [label="5",shape=none,fontcolor="green"]
+	36 [label="6",shape=none,fontcolor="green"]
+	37 [label="7",shape=none,fontcolor="green"]
+	38 [label="8",shape=none,fontcolor="green"]
+	39 [label="9",shape=none,fontcolor="green"]
+	40 [label="10",shape=none,fontcolor="green"]
+	41 [label="11",shape=none,fontcolor="green"]
+	42 [label="12",shape=none,fontcolor="green"]
+	44 [label="14",shape=none,fontcolor="green"]
+	45 [label="0",shape=none,fontcolor="blue"]
+	46 [label="1",shape=none,fontcolor="blue"]
+	47 [label="2",shape=none,fontcolor="blue"]
+	48 [label="3",shape=none,fontcolor="blue"]
+	50 [label="5",shape=none,fontcolor="blue"]
+	51 [label="6",shape=none,fontcolor="blue"]
+	52 [label="7",shape=none,fontcolor="blue"]
+	53 [label="8",shape=none,fontcolor="blue"]
+	54 [label="9",shape=none,fontcolor="blue"]
+	55 [label="10",shape=none,fontcolor="blue"]
+	56 [label="11",shape=none,fontcolor="blue"]
+	57 [label="12",shape=none,fontcolor="blue"]
+	58 [label="13",shape=none,fontcolor="blue"]
+	60 [label="1",shape=none,fontcolor="yellow"]
+	61 [label="2",shape=none,fontcolor="yellow"]
+	63 [label="4",shape=none,fontcolor="yellow"]
+	64 [label="5",shape=none,fontcolor="yellow"]
+	66 [label="7",shape=none,fontcolor="yellow"]
+	71 [label="12",shape=none,fontcolor="yellow"]
+	72 [label="0",shape=none,fontcolor="indigo"]
+	73 [label="1",shape=none,fontcolor="indigo"]
+	74 [label="2",shape=none,fontcolor="indigo"]
+	75 [label="3",shape=none,fontcolor="indigo"]
+	76 [label="4",shape=none,fontcolor="indigo"]
+	77 [label="5",shape=none,fontcolor="indigo"]
+	78 [label="6",shape=none,fontcolor="indigo"]
+	79 [label="7",shape=none,fontcolor="indigo"]
+	80 [label="8",shape=none,fontcolor="indigo"]
+	81 [label="9",shape=none,fontcolor="indigo"]
+	82 [label="10",shape=none,fontcolor="indigo"]
+	83 [label="11",shape=none,fontcolor="indigo"]
+	84 [label="12",shape=none,fontcolor="indigo"]
+	85 [label="0",shape=none,fontcolor="gold"]
+	86 [label="1",shape=none,fontcolor="gold"]
+	87 [label="2",shape=none,fontcolor="gold"]
+	89 [label="4",shape=none,fontcolor="gold"]
+	90 [label="5",shape=none,fontcolor="gold"]
+	91 [label="6",shape=none,fontcolor="gold"]
+	92 [label="7",shape=none,fontcolor="gold"]
+	93 [label="8",shape=none,fontcolor="gold"]
+	94 [label="9",shape=none,fontcolor="gold"]
+	95 [label="10",shape=none,fontcolor="gold"]
+	98 [label="0",shape=none,fontcolor="hotpink"]
+	99 [label="1",shape=none,fontcolor="hotpink"]
+	100 [label="2",shape=none,fontcolor="hotpink"]
+	101 [label="3",shape=none,fontcolor="hotpink"]
+	102 [label="4",shape=none,fontcolor="hotpink"]
+	103 [label="5",shape=none,fontcolor="hotpink"]
+	104 [label="6",shape=none,fontcolor="hotpink"]
+	106 [label="8",shape=none,fontcolor="hotpink"]
+	107 [label="9",shape=none,fontcolor="hotpink"]
+	108 [label="10",shape=none,fontcolor="hotpink"]
+	110 [label="0",shape=none,fontcolor="firebrick"]
+	111 [label="1",shape=none,fontcolor="firebrick"]
+	112 [label="2",shape=none,fontcolor="firebrick"]
+	113 [label="3",shape=none,fontcolor="firebrick"]
+	115 [label="5",shape=none,fontcolor="firebrick"]
+	116 [label="6",shape=none,fontcolor="firebrick"]
+	117 [label="7",shape=none,fontcolor="firebrick"]
+	118 [label="8",shape=none,fontcolor="firebrick"]
+	121 [label="11",shape=none,fontcolor="firebrick"]
+	122 [label="0",shape=none,fontcolor="indianred"]
+	123 [label="1",shape=none,fontcolor="indianred"]
+	124 [label="2",shape=none,fontcolor="indianred"]
+	126 [label="4",shape=none,fontcolor="indianred"]
+	127 [label="5",shape=none,fontcolor="indianred"]
+	128 [label="6",shape=none,fontcolor="indianred"]
+	129 [label="7",shape=none,fontcolor="indianred"]
+	130 [label="8",shape=none,fontcolor="indianred"]
+	133 [label="11",shape=none,fontcolor="indianred"]
+	134 [label="0",shape=none,fontcolor="mistyrose"]
+	136 [label="2",shape=none,fontcolor="mistyrose"]
+	137 [label="3",shape=none,fontcolor="mistyrose"]
+	138 [label="4",shape=none,fontcolor="mistyrose"]
+	139 [label="5",shape=none,fontcolor="mistyrose"]
+	140 [label="6",shape=none,fontcolor="mistyrose"]
+	141 [label="7",shape=none,fontcolor="mistyrose"]
+	142 [label="8",shape=none,fontcolor="mistyrose"]
+	144 [label="10",shape=none,fontcolor="mistyrose"]
+	145 [label="0",shape=none,fontcolor="darkolivegreen"]
+	149 [label="4",shape=none,fontcolor="darkolivegreen"]
+	150 [label="5",shape=none,fontcolor="darkolivegreen"]
+	151 [label="6",shape=none,fontcolor="darkolivegreen"]
+	153 [label="8",shape=none,fontcolor="darkolivegreen"]
+	154 [label="9",shape=none,fontcolor="darkolivegreen"]
+	157 [label="1",shape=none,fontcolor="darkseagreen"]
+	159 [label="3",shape=none,fontcolor="darkseagreen"]
+	161 [label="5",shape=none,fontcolor="darkseagreen"]
+	162 [label="6",shape=none,fontcolor="darkseagreen"]
+	164 [label="8",shape=none,fontcolor="darkseagreen"]
+	165 [label="9",shape=none,fontcolor="darkseagreen"]
+	168 [label="2",shape=none,fontcolor="pink"]
+	169 [label="3",shape=none,fontcolor="pink"]
+	170 [label="4",shape=none,fontcolor="pink"]
+	171 [label="5",shape=none,fontcolor="pink"]
+	172 [label="6",shape=none,fontcolor="pink"]
+	173 [label="7",shape=none,fontcolor="pink"]
+	174 [label="8",shape=none,fontcolor="pink"]
+	177 [label="1",shape=none,fontcolor="tomato"]
+	178 [label="2",shape=none,fontcolor="tomato"]
+	180 [label="4",shape=none,fontcolor="tomato"]
+	181 [label="5",shape=none,fontcolor="tomato"]
+	182 [label="6",shape=none,fontcolor="tomato"]
+	183 [label="7",shape=none,fontcolor="tomato"]
+	185 [label="0",shape=none,fontcolor="lightcoral"]
+	187 [label="2",shape=none,fontcolor="lightcoral"]
+	188 [label="3",shape=none,fontcolor="lightcoral"]
+	189 [label="4",shape=none,fontcolor="lightcoral"]
+	190 [label="5",shape=none,fontcolor="lightcoral"]
+	191 [label="6",shape=none,fontcolor="lightcoral"]
+	192 [label="7",shape=none,fontcolor="lightcoral"]
+	193 [label="8",shape=none,fontcolor="lightcoral"]
+	194 [label="0",shape=none,fontcolor="orangered"]
+	195 [label="1",shape=none,fontcolor="orangered"]
+	197 [label="3",shape=none,fontcolor="orangered"]
+	198 [label="4",shape=none,fontcolor="orangered"]
+	199 [label="5",shape=none,fontcolor="orangered"]
+	200 [label="6",shape=none,fontcolor="orangered"]
+	201 [label="7",shape=none,fontcolor="orangered"]
+	203 [label="1",shape=none,fontcolor="palegreen"]
+	204 [label="2",shape=none,fontcolor="palegreen"]
+	205 [label="3",shape=none,fontcolor="palegreen"]
+	206 [label="4",shape=none,fontcolor="palegreen"]
+	207 [label="5",shape=none,fontcolor="palegreen"]
+	208 [label="6",shape=none,fontcolor="palegreen"]
+	209 [label="7",shape=none,fontcolor="palegreen"]
+	210 [label="0",shape=none,fontcolor="darkslategrey"]
+	211 [label="1",shape=none,fontcolor="darkslategrey"]
+	213 [label="3",shape=none,fontcolor="darkslategrey"]
+	214 [label="4",shape=none,fontcolor="darkslategrey"]
+	215 [label="5",shape=none,fontcolor="darkslategrey"]
+	216 [label="6",shape=none,fontcolor="darkslategrey"]
+	217 [label="7",shape=none,fontcolor="darkslategrey"]
+	218 [label="0",shape=none,fontcolor="greenyellow"]
+	219 [label="1",shape=none,fontcolor="greenyellow"]
+	220 [label="2",shape=none,fontcolor="greenyellow"]
+	221 [label="3",shape=none,fontcolor="greenyellow"]
+	222 [label="4",shape=none,fontcolor="greenyellow"]
+	223 [label="5",shape=none,fontcolor="greenyellow"]
+	224 [label="6",shape=none,fontcolor="greenyellow"]
+	225 [label="0",shape=none,fontcolor="burlywood"]
+	226 [label="1",shape=none,fontcolor="burlywood"]
+	227 [label="2",shape=none,fontcolor="burlywood"]
+	228 [label="3",shape=none,fontcolor="burlywood"]
+	229 [label="4",shape=none,fontcolor="burlywood"]
+	230 [label="5",shape=none,fontcolor="burlywood"]
+	231 [label="6",shape=none,fontcolor="burlywood"]
+	232 [label="0",shape=none,fontcolor="seashell"]
+	233 [label="1",shape=none,fontcolor="seashell"]
+	234 [label="2",shape=none,fontcolor="seashell"]
+	238 [label="0",shape=none,fontcolor="mediumspringgreen"]
+	240 [label="2",shape=none,fontcolor="mediumspringgreen"]
+	241 [label="3",shape=none,fontcolor="mediumspringgreen"]
+	242 [label="4",shape=none,fontcolor="mediumspringgreen"]
+	243 [label="0",shape=none,fontcolor="papayawhip"]
+	245 [label="2",shape=none,fontcolor="papayawhip"]
+	247 [label="4",shape=none,fontcolor="papayawhip"]
+	253 [label="1",shape=none,fontcolor="chartreuse"]
+	254 [label="2",shape=none,fontcolor="chartreuse"]
+	255 [label="3",shape=none,fontcolor="chartreuse"]
+	256 [label="0",shape=none,fontcolor="dimgray"]
+	257 [label="1",shape=none,fontcolor="dimgray"]
+	259 [label="3",shape=none,fontcolor="dimgray"]
+	267 [label="0",shape=none,fontcolor="aquamarine"]
+	269 [label="2",shape=none,fontcolor="aquamarine"]
+	n1_0 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.64,label="Y0"]
+	n1_1 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.66,label="Y1"]
+	n1_2 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.36,label="Y2"]
+	n1_3 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.52,label="Y3"]
+	n1_4 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.62,label="Y4"]
+	n1_5 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.39,label="Y5"]
+	n1_6 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.52,label="Y6"]
+	n1_7 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.38,label="Y7"]
+	n1_8 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.42,label="Y8"]
+	n1_9 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.37,label="Y9"]
+	n1_10 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.36,label="Y10"]
+	n1_11 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.32,label="Y11"]
+	n1_12 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.35,label="Y12"]
+	n1_13 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.34,label="Y13"]
+	n1_14 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.29,label="Y14"]
+	n1_15 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.28,label="Y15"]
+	n1_16 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.39,label="Y16"]
+	n1_17 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y17"]
+	n1_18 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.36,label="Y18"]
+	n1_19 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.28,label="Y19"]
+	n1_20 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y20"]
+	n1_21 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y21"]
+	n1_22 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y22"]
+	n1_23 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y23"]
+	n1_24 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y24"]
+	n1_25 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y25"]
+	n1_26 [shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=0.22,label="Y26"]
+}
