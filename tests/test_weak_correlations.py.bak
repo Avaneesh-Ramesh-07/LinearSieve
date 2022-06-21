@@ -16,12 +16,12 @@ verbose = False
 np.set_printoptions(precision=3, suppress=True, linewidth=200)
 seed = 1
 np.random.seed(seed)
-colors = ['black', 'red', 'green', 'blue', 'yellow', 'indigo', 'gold', 'hotpink', 'firebrick', 'indianred',
-          'mistyrose', 'darkolivegreen', 'darkseagreen', 'pink', 'tomato', 'lightcoral', 'orangered',
-          'palegreen', 'darkslategrey', 'greenyellow', 'burlywood', 'seashell', 'mediumspringgreen',
-          'papayawhip', 'blanchedalmond', 'chartreuse', 'dimgray', 'peachpuff', 'springgreen', 'aquamarine',
-          'orange', 'lightsalmon', 'darkslategray', 'brown', 'ivory', 'dodgerblue', 'peru', 'darkgrey',
-          'lawngreen', 'chocolate', 'crimson', 'forestgreen', 'slateblue', 'cyan', 'mintcream', 'silver']
+colors = ['black', 'red', 'green', 'blue', 'yellow', u'indigo', u'gold', u'hotpink', u'firebrick', u'indianred',
+          u'mistyrose', u'darkolivegreen', u'darkseagreen', u'pink', u'tomato', u'lightcoral', u'orangered',
+          u'palegreen', u'darkslategrey', u'greenyellow', u'burlywood', u'seashell', u'mediumspringgreen',
+          u'papayawhip', u'blanchedalmond', u'chartreuse', u'dimgray', u'peachpuff', u'springgreen', u'aquamarine',
+          u'orange', u'lightsalmon', u'darkslategray', u'brown', u'ivory', u'dodgerblue', u'peru', u'darkgrey',
+          u'lawngreen', u'chocolate', u'crimson', u'forestgreen', u'slateblue', u'cyan', u'mintcream', u'silver']
 
 # 30 groups, 5-20 variables each, various weak correlations
 # Some groups bimodal.
@@ -74,30 +74,30 @@ order = np.argsort([-q.shape[1] for q in data_groups])
 data_groups = [data_groups[i] for i in order]
 signal = np.array([signal[:,i] for i in order]).T
 data = np.hstack(data_groups)
-print(('group sizes', [q.shape[1] for q in data_groups]))
-print(('Data size:', data.shape))
+print ('group sizes', map(lambda q: q.shape[1], data_groups))
+print ('Data size:', data.shape)
 
 for loop_i in range(1):
     out = linearsieve.Sieve(n_hidden=n_groups, seed=seed + loop_i, verbose=verbose).fit(data)
     print ('Done, scoring:')
     scores = score(signal, out.transform(data))
-    print(('TC:', out.tc))
-    print(('Actual score:', scores))
-    print(('Number Ok, %d / %d' % (np.sum(scores > 0.5), len(scores))))
-    print(('total score, %0.3f' % np.sum(scores)))
+    print ('TC:', out.tc)
+    print ('Actual score:', scores)
+    print ('Number Ok, %d / %d' % (np.sum(scores > 0.5), len(scores)))
+    print ('total score, %0.3f' % np.sum(scores))
 
 names = []
 for j, group in enumerate(data_groups):
     color = colors[j]
-    rs = [get_r(q, signal[:, j]) for q in group.T]
-    mis = [(-0.5 * np.log(1 - r**2)) for r in rs]
+    rs = map(lambda q: get_r(q, signal[:, j]), group.T)
+    mis = map(lambda r: (-0.5 * np.log(1 - r**2)), rs)
     #print ','.join(map(lambda r: '%0.3f' % r, mis))
     #print(list(np.sum(mis)))
     #np.sum(mis) is of type map
-    print (('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], list(np.sum(mis)))).expandtabs(30))
+    #print (('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], list(np.sum(mis)))).expandtabs(30))
     for i in range(group.shape[1]):
         names.append(color + '_' + str(i))
 
 vs.vis_rep(out, data, column_label=names, prefix='weak')
-print(('Perfect score:', score(signal, signal)))
-print(('Baseline score:', score(signal, baseline)))
+print ('Perfect score:', score(signal, signal))
+print ('Baseline score:', score(signal, baseline))

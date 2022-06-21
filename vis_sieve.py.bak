@@ -16,9 +16,9 @@ from scipy.stats import norm, rankdata  # Used for Gaussianizing data
 def vis_rep(sieve, data, row_label=None, column_label=None, prefix='corex_output', max_edges=200):
     """Various visualizations and summary statistics for a one layer representation"""
     if column_label is None:
-        column_label = list(map(str, list(range(data.shape[1]))))
+        column_label = map(str, range(data.shape[1]))
     if row_label is None:
-        row_label = list(map(str, list(range(len(data)))))
+        row_label = map(str, range(len(data)))
     column_label += ["Y%d" % j for j in range(sieve.n_hidden)]
 
     print ('Groups in groups.txt')
@@ -59,7 +59,7 @@ def output_labels(labels, row_label, prefix=''):
     listrl=list(row_label) #changed from list(rowlabel) being in place of listrl in f.write func below
     for l in range(ns):
 
-        f.write(listrl[l] + ',' + ','.join((list(map(str, list(labels[l, :]))))) + '\n')
+        f.write(listrl[l] + ',' + ','.join((map(str, list(labels[l, :])))) + '\n')
     f.close()
 
 
@@ -83,20 +83,20 @@ def plot_top_relationships(data, mis, column_label, cont, topk=5, prefix=''):
     for j in range(m):
         inds = np.argsort(- mis[j])[:topk]
         if len(inds) >= 2:
-            plot_rels(data[:, inds], [column_label[q] for q in inds], colors=cont[:, j],
+            plot_rels(data[:, inds], map(lambda q: column_label[q], inds), colors=cont[:, j],
                       outfile=prefix + '/relationships/group_num=' + str(j))
 
 
 def plot_rels(data, labels=None, colors=None, outfile="rels", latent=None, alpha=0.5):
     ns, n = data.shape
     if labels is None:
-        labels = list(map(str, list(range(n))))
+        labels = map(str, range(n))
     ncol = 5
     nrow = int(np.ceil(float(n * (n - 1) / 2) / ncol))
 
     fig, axs = pylab.subplots(nrow, ncol)
     fig.set_size_inches(5 * ncol, 5 * nrow)
-    pairs = list(combinations(list(range(n)), 2))
+    pairs = list(combinations(range(n), 2))
     if colors is not None:
         colors = (colors - np.min(colors)) / (np.max(colors) - np.min(colors))
     labels=list(labels)  #(line wasn't here before)added this line in to combat the map not subscriptable error given in lines: ax.set_xlabel(shorten(labels[pair[0]])) and ax.set_ylabel(shorten(labels[pair[1]]))
@@ -129,7 +129,7 @@ def plot_rels(data, labels=None, colors=None, outfile="rels", latent=None, alpha
 def vis_hierarchy(sieve, column_label, max_edges=200, prefix=''):
     """Visualize a hierarchy of representations."""
     import textwrap
-    column_label = ['\n'.join(textwrap.wrap(q, width=20)) for q in column_label]
+    column_label = map(lambda q: '\n'.join(textwrap.wrap(q, width=20)), column_label)
 
     def f(j):
         if j < sieve.nv:
@@ -167,7 +167,7 @@ def vis_hierarchy(sieve, column_label, max_edges=200, prefix=''):
     # Output JSON files
     try:
         import os
-        print((os.path.dirname(os.path.realpath(__file__))))
+        print (os.path.dirname(os.path.realpath(__file__)))
         copyfile(os.path.dirname(os.path.realpath(__file__)) + '/tests/d3_files/force.html', prefix + '/graphs/force.html')
     except:
         print ("Couldn't find 'force.html' file for visualizing d3 output")
@@ -200,7 +200,7 @@ def neato(fname, position=None, directed=False):
 def extract_color(label):
     import matplotlib
 
-    colors = list(matplotlib.colors.cnames.keys())
+    colors = matplotlib.colors.cnames.keys()
     parts = label.split('_')
     for part in parts:
         if part in colors:
@@ -218,14 +218,14 @@ def edge2pdf(g, filename, threshold=0, position=None, labels=None, connected=Tru
     def cnn(node):
         #change node names for dot format
         if type(node) is tuple or type(node) is list:
-            return 'n' + '_'.join(map(str, node))
+            return u'n' + u'_'.join(map(str, node))
         else:
             return str(node)
 
     if connected:
         touching = list(set(sum([[a, b] for a, b in g.edges()], [])))
         g = nx.subgraph(g, touching)
-        print(('non-isolated nodes,edges', len(list(g.nodes())), len(list(g.edges()))))
+        print ('non-isolated nodes,edges', len(list(g.nodes())), len(list(g.edges())))
     f = safe_open(filename + '.dot', 'wb')
     if directed:
         f.write("strict digraph {\n".encode('utf-8'))
@@ -252,23 +252,23 @@ def edge2pdf(g, filename, threshold=0, position=None, labels=None, connected=Tru
     for n in g.nodes():
         if labels is not None:
             if type(labels) == dict or type(labels) == list:
-                thislabel = labels[n].replace('"', '\\"')
-                lstring = 'label="' + thislabel + '",shape=none'
+                thislabel = labels[n].replace(u'"', u'\\"')
+                lstring = u'label="' + thislabel + u'",shape=none'
             elif type(labels) == str:
                 if 'label' in g._node[n]:
-                    thislabel = g._node[n][labels].replace('"', '\\"')
+                    thislabel = g._node[n][labels].replace(u'"', u'\\"')
                     # combine dupes
                     #llist = thislabel.split(',')
                     #thislabel = ','.join([l for l in set(llist)])
                     thislabel, thiscolor = extract_color(thislabel)
-                    lstring = 'label="%s",shape=none,fontcolor="%s"' % (thislabel, thiscolor)
+                    lstring = u'label="%s",shape=none,fontcolor="%s"' % (thislabel, thiscolor)
                 else:
                     weight = g._node[n].get('weight', 0.1)
                     if n[0] == 1:
-                        lstring = 'shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=%0.2f,label="Y%d"' % (
+                        lstring = u'shape=circle,margin="0,0",style=filled,fillcolor=black,fontcolor=white,height=%0.2f,label="Y%d"' % (
                             2 * weight, n[1])
                     else:
-                        lstring = 'shape=point,height=%0.2f' % weight
+                        lstring = u'shape=point,height=%0.2f' % weight
             else:
                 lstring = 'label="' + str(n) + '",shape=none'
             lstring = str(lstring)
@@ -277,12 +277,12 @@ def edge2pdf(g, filename, threshold=0, position=None, labels=None, connected=Tru
         if position is not None:
             if position == 'grid':
                 position = [(i % 28, 28 - i / 28) for i in range(784)]
-            posstring = str('pos="' + str(position[n][0]) + ',' + str(position[n][1]) + '"')
+            posstring = unicode('pos="' + str(position[n][0]) + ',' + str(position[n][1]) + '"')
         else:
             posstring = False
-        finalstring = ' [' + ','.join([ts for ts in [posstring, lstring] if ts]) + ']\n'
+        finalstring = u' [' + u','.join([ts for ts in [posstring, lstring] if ts]) + u']\n'
         #finalstring = u' ['+lstring+u']\n'
-        f.write(('\t' + cnn(n) + finalstring).encode('utf-8'))
+        f.write((u'\t' + cnn(n) + finalstring).encode('utf-8'))
     f.write("}".encode('utf-8'))
     f.close()
     if makepdf:
@@ -297,12 +297,12 @@ def shorten(s, n=12):
 
 
 def trim(g, max_parents=False, max_children=False):
-    print((type(g)))
+    print(type(g))
     for node in g:
         if max_parents:
             parents = list(g.successors(node))
             for parent in parents:
-                print((type(g.edges)))
+                print(type(g.edges))
                 weights = [g.edges[node][parent]['weight'] ] #no attribute edge for variable g, attribute is actually edges
             for weak_parent in np.argsort(weights)[:-max_parents]:
                 g.remove_edge(node, parents[weak_parent])
@@ -426,9 +426,9 @@ if __name__ == '__main__':
         sys.exit()
 
     if verbose:
-        print(('\nData summary: X has %d rows and %d columns' % X.shape))
-        print(('Variable names are: ' + ','.join(map(str, list(enumerate(variable_names))))))
-        print(('first row', X[0]))
+        print ('\nData summary: X has %d rows and %d columns' % X.shape)
+        print ('Variable names are: ' + ','.join(map(str, list(enumerate(variable_names)))))
+        print ('first row', X[0])
 
     if options.gaussianize:
         X = gaussianize(X)
