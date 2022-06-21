@@ -94,7 +94,7 @@ for j, group in enumerate(data_groups):
     #print ','.join(map(lambda r: '%0.3f' % r, mis))
     #print(list(np.sum(mis)))
     #np.sum(mis) is of type map
-    print (('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], list(np.sum(mis)))).expandtabs(30))
+    print((('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], list(np.sum(mis)))).expandtabs(30)))
     for i in range(group.shape[1]):
         names.append(color + '_' + str(i))
 
