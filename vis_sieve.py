@@ -445,7 +445,7 @@ if __name__ == '__main__':
     else:
         s = cPickle.load(filename)
 
-    # This line outputs plots showing relationships at the first layer
+    # This line outputs plots showing relationships at the first layer.
     vis_rep(s, X, row_label=sample_names, column_label=variable_names, prefix=options.output, max_edges=options.max_edges)
     # This line outputs a hierarchical networks structure in a .dot file in the "graphs" folder
     # And it tries to compile the dot file into a pdf using the command line utility sfdp (part of graphviz)
