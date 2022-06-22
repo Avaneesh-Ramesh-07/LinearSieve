@@ -78,9 +78,9 @@ print(('group sizes', [q.shape[1] for q in data_groups]))
 print(('Data size:', data.shape))
 
 for loop_i in range(1):
-    out = linearsieve.Sieve(n_hidden=n_groups, seed=seed + loop_i, verbose=verbose).fit(data)
+    out = linearsieve.Sieve(n_hidden=n_groups, seed=seed + loop_i, verbose=verbose).fit(data) #try to match with paper
     print ('Done, scoring:')
-    scores = score(signal, out.transform(data))
+    scores = score(signal, out.transform(data)) #look at score func - probably implementing total correlation
     print(('TC:', out.tc))
     print(('Actual score:', scores))
     print(('Number Ok, %d / %d' % (np.sum(scores > 0.5), len(scores))))
@@ -94,10 +94,12 @@ for j, group in enumerate(data_groups):
     #print ','.join(map(lambda r: '%0.3f' % r, mis))
     #print(list(np.sum(mis)))
     #np.sum(mis) is of type map
-    print((('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], list(np.sum(mis)))).expandtabs(30)))
+    #print(('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], (np.sum(mis))))) .expandtabs(30)))
+    print(('Color: %s\tNumber in group: %d\ttotal MI: %0.3f' % (color, group.shape[1], (np.sum(mis)))))
     for i in range(group.shape[1]):
         names.append(color + '_' + str(i))
 
 vs.vis_rep(out, data, column_label=names, prefix='weak')
 print(('Perfect score:', score(signal, signal)))
 print(('Baseline score:', score(signal, baseline)))
+#look at visrep, Sieve, and score functions and find out what they are doing
